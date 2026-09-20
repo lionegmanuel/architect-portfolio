@@ -27,6 +27,7 @@ Este documento consolida la auditoria tecnica de los repositorios y activos desa
 ## 2. Inventario Tecnico de Proyectos y Motores Clave
 
 ### A. whatsapp-agent-guardrails (AI Safety & Determinism)
+
 - **Ubicacion**: `D:\Documents\MANUEL\DEV\whatsapp-agent-guardrails`
 - **Problema**: Los agentes conversacionales basados en LLM sufren de alucinaciones, respuestas no autorizadas, fugas de precios y desvio de politicas corporativas en produccion.
 - **Solucion**: Capa determinista de guardrails ultrarrapida ejecutada en pipeline de <5ms que intercepta y sanitiza entradas y salidas antes de emitir un mensaje al cliente.
@@ -37,6 +38,7 @@ Este documento consolida la auditoria tecnica de los repositorios y activos desa
 - **Stack**: TypeScript 5, Zod 3, Vitest, tsup (dual ESM/CJS).
 
 ### B. financial-stream-dashboard-core (FinTech & Stream Processing)
+
 - **Ubicacion**: `D:\Documents\MANUEL\DEV\financial-stream-dashboard-core`
 - **Problema**: Los paneles financieros corporativos suelen depender de polling HTTP ineficiente, colapsando servidores y mostrando datos desactualizados en operaciones criticas de tesoreria.
 - **Solucion**: Arquitectura de transmision de datos en tiempo real mediante Server-Sent Events (SSE) y WebSockets con renderizado reactivo y procesamiento por lotes.
@@ -47,6 +49,7 @@ Este documento consolida la auditoria tecnica de los repositorios y activos desa
 - **Stack**: Next.js 15, React 19, Tailwind CSS, TypeScript, Server-Sent Events.
 
 ### C. fuzzy-reconciliation-engine (High-Performance Financial Algorithms)
+
 - **Ubicacion**: `D:\Documents\MANUEL\DEV\fuzzy-reconciliation-engine`
 - **Problema**: La conciliacion de extractos bancarios contra libros contables en PyMEs y fintechs requiere horas manuales debido a descripciones truncadas, fechas dispares y cargos no identificados.
 - **Solucion**: Motor determinista de reconciliacion difusa que combina algoritmos de Levenshtein, Jaro-Winkler y matching ponderado de importes con ventanas temporales dinamicas.
@@ -57,6 +60,7 @@ Este documento consolida la auditoria tecnica de los repositorios y activos desa
 - **Stack**: TypeScript, Algoritmos de Similitud de Cadenas, Vitest, Node.js CLI.
 
 ### D. dentflow-clinical-guardrails (MedTech & Clinical Triage)
+
 - **Ubicacion**: `D:\Documents\MANUEL\DEV\dentflow-clinical-guardrails`
 - **Problema**: Los asistentes virtuales en clinicas odontologicas y medicas no comprenden la notacion dental estandar (FDI) y cometen errores criticos al no detectar urgencias de trauma o hemorragia.
 - **Solucion**: Parser formal de notacion de dos digitos FDI y motor de clasificacion clinica de urgencias con derivacion automatica a guardia y agenda odontologica.
@@ -67,6 +71,7 @@ Este documento consolida la auditoria tecnica de los repositorios y activos desa
 - **Stack**: TypeScript, Zod, State Machines deterministas, Vitest.
 
 ### E. docuflow-b2b (Enterprise Document Intake & Anti-Fraud Engine)
+
 - **Ubicacion**: `D:\Documents\MANUEL\DEV\docuflow-b2b`
 - **Problema**: Procesos de admision en concesionarias, inmobiliarias y fintechs colapsan por revision manual de DNI, CUIT, recibos de sueldo y facturas de servicios, propiciando fraudes por suplantacion.
 - **Solucion**: Motor de cruce cruzado de consistencia documental con verificacion algoritmica de modulo 11, matching nominal y calculo de capacidad de pago con scoring determinista (0 a 100).
@@ -77,6 +82,7 @@ Este documento consolida la auditoria tecnica de los repositorios y activos desa
 - **Stack**: TypeScript, Zod, Algoritmos de Modulo 11, Vitest.
 
 ### F. optica-pasteur (Commercial Digital Showroom & WhatsApp Cart)
+
 - **Ubicacion**: `D:\Documents\MANUEL\DEV\optica-pasteur`
 - **Problema**: Comercios opticos con catalogos extensos dependen de plataformas de e-commerce pesadas que exigen carga manual y no se integran al canal de venta natural en Argentina (WhatsApp).
 - **Solucion**: Showroom digital estatico ultra-rapido con 32 rutas pre-renderizadas, seleccion interactiva de armazones y despacho directo de pedidos formateados a WhatsApp.
@@ -86,6 +92,7 @@ Este documento consolida la auditoria tecnica de los repositorios y activos desa
 - **Stack**: Next.js 15, Tailwind CSS, TypeScript, WhatsApp Checkout Protocol.
 
 ### G. APK-Security-Validator (Mobile & AppSec Engineering)
+
 - **Ubicacion**: `D:\Documents\MANUEL\DEV\APK-Security-Validator`
 - **Problema**: La auditoria estatica de APKs requiere complejas cadenas de herramientas en Linux que dificultan la revision rapida de endpoints inseguros, permisos indebidos y certificados.
 - **Solucion**: Suite automatizada de analisis estatico de seguridad y descompilacion de APKs Android utilizando Jadx, inspeccion de AndroidManifest.xml y deteccion de credenciales hardcodeadas.
