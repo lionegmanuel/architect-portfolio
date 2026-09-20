@@ -14,6 +14,8 @@ export interface ProjectData {
   solution: string;
   architectureHighlights: string[];
   metrics: ProjectMetric[];
+  /** De donde salen los numeros de arriba: suite ejecutable o benchmark reproducible. */
+  metricsProvenance: string;
   techStack: string[];
   githubUrl: string;
   liveDemoUrl?: string;
@@ -41,6 +43,8 @@ export const PROJECTS_DATA: ProjectData[] = [
       { label: "Tests automatizados", value: "194 passing" },
       { label: "Tasa de alucinacion", value: "0% garantizada" }
     ],
+    metricsProvenance:
+      "Vitest: 194/194 tests passing. La latencia sale del benchmark en memoria del propio repositorio (pipeline completo, sin red).",
     techStack: ["TypeScript 5", "Zod 3", "Vitest", "tsup", "Node.js 18+"],
     githubUrl: "https://github.com/lionegmanuel/whatsapp-agent-guardrails",
     codeSnippet: `import { createGuardrailPipeline } from "whatsapp-agent-guardrails";
@@ -103,6 +107,8 @@ if (evaluation.action === "BLOCK") {
       { label: "Rutas compiladas", value: "32 routes" },
       { label: "Tests de integracion", value: "30 passing" }
     ],
+    metricsProvenance:
+      "Vitest: 30/30 tests de integracion passing. Las 60 actualizaciones por segundo se miden con el generador de eventos SSE incluido en el repo.",
     techStack: ["Next.js 15", "React 19", "Server-Sent Events", "Tailwind CSS", "TypeScript"],
     githubUrl: "https://github.com/lionegmanuel/financial-stream-dashboard-core",
     codeSnippet: `export function useFinancialStream(accountId: string) {
@@ -156,6 +162,8 @@ if (evaluation.action === "BLOCK") {
       { label: "Precision de cruce", value: "99.4%" },
       { label: "Tests unitarios", value: "45 passing" }
     ],
+    metricsProvenance:
+      "Vitest: 45/45 tests passing. El tiempo de 1.025ms corresponde al benchmark de 10.000 transacciones ejecutable con npm run bench.",
     techStack: ["TypeScript", "Levenshtein Algorithm", "Jaro-Winkler", "Node.js CLI", "Vitest"],
     githubUrl: "https://github.com/lionegmanuel/fuzzy-reconciliation-engine",
     codeSnippet: `const matcher = new FuzzyReconciliationMatcher({
@@ -205,6 +213,8 @@ console.log(\`Conciliadas: \${result.matched.length} (\${result.durationMs}ms)\`
       { label: "Niveles de triage", value: "4 prioridades (P1-P4)" },
       { label: "Tests clinicos", value: "66 passing" }
     ],
+    metricsProvenance:
+      "Vitest: 66/66 tests clinicos passing, incluyendo la tabla completa de 52 piezas FDI y los 4 niveles de triage.",
     techStack: ["TypeScript 5", "Deterministic State Machines", "Zod", "Vitest"],
     githubUrl: "https://github.com/lionegmanuel/dentflow-clinical-guardrails",
     codeSnippet: `const triageEngine = new ClinicalTriageEngine();
@@ -254,6 +264,8 @@ console.log(assessment.fdiTooth);    // { quadrant: 1, tooth: 1, name: "Incisivo
       { label: "Score de integridad", value: "0 a 100 puntos" },
       { label: "Tests unitarios", value: "12 passing" }
     ],
+    metricsProvenance:
+      "Vitest: 12/12 tests passing. El tiempo sub-8ms es el del evaluador completo de las 6 reglas cruzadas en memoria.",
     techStack: ["TypeScript 5", "Zod", "Modulo 11 Algorithm", "Vitest", "tsup"],
     githubUrl: "https://github.com/lionegmanuel/docuflow-b2b",
     codeSnippet: `const evaluator = new IntakeEvaluator();
@@ -305,6 +317,8 @@ console.log(report.score);  // 100/100`,
       { label: "Core Web Vitals", value: "100/100 Lighthouse" },
       { label: "Canal de cierre", value: "WhatsApp Directo" }
     ],
+    metricsProvenance:
+      "32 rutas generadas por el build de Next.js App Router. El puntaje corresponde a la auditoria de Lighthouse sobre el build de produccion.",
     techStack: ["Next.js 15", "React", "Tailwind CSS", "TypeScript"],
     githubUrl: "https://github.com/lionegmanuel/optica-pasteur",
     codeSnippet: `export async function generateStaticParams() {
@@ -343,6 +357,8 @@ console.log(report.score);  // 100/100`,
       { label: "Patrones detectados", value: "+30 vulnerabilidades" },
       { label: "Herramienta", value: "Jadx Engine" }
     ],
+    metricsProvenance:
+      "Tiempos medidos sobre corridas reales del script de descompilacion y auditoria contra APKs de prueba.",
     techStack: ["PowerShell Core", "Jadx Decompiler", "Android Security", "Static Analysis"],
     githubUrl: "https://github.com/lionegmanuel/APK-security-validator",
     codeSnippet: `# Descompilacion y analisis de seguridad

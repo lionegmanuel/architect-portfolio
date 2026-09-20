@@ -32,7 +32,7 @@ Se adopta lo mejor de las landing pages de desarrolladores y arquitectos mas pre
 - **Titular Principal**:
   `Diseño y construyo sistemas de IA deterministas, arquitecturas de alta frecuencia y motores de software sin cuellos de botella.`
 - **Subtitular**:
-  `Principal AI Systems Architect y Co-Fundador de Velinex. Especializado en pipelines de baja latencia (<5ms), procesamiento de datos en tiempo real y eliminacion de friccion operativa para operaciones de escala.`
+  `Principal AI Systems Architect y Fundador y Director General de Velinex. Especializado en pipelines de baja latencia (<5ms), procesamiento de datos en tiempo real y eliminacion de friccion operativa para operaciones de escala.`
 - **Barra de Credenciales y Metricas Clave**:
   - `>400+`: Tests unitarios y de integracion pasando en tiempo real.
   - `<4.5ms`: Latencia determinista en guardrails de IA en produccion.

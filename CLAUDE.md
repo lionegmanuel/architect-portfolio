@@ -51,3 +51,14 @@ Este archivo es el manual operativo central que Claude lee al iniciar cualquier 
 - **Rendimiento**: Cero frameworks pesados innecesarios; carga instantanea (<1s en Core Web Vitals), 100/100 en Google Lighthouse.
 - **Deploy Target**: Vercel, Cloudflare Pages o Netlify con build estatico.
 - **Diseño**: Dark theme premium para ingenieria (paleta de grises profundos, acentos cian y azul electrico, bordes sutiles, microinteracciones, modales para arquitectura de proyectos y badges de tests).
+
+---
+
+## 4. Contexto entre sesiones (`UPDATES.md`)
+
+- Al iniciar una conversacion nueva sobre este proyecto: revisar `UPDATES.md` (mismo directorio que este archivo) para confirmar contexto previo: cambios recientes, pendientes abiertos y estado de la ultima sesion.
+- `UPDATES.md` es de escritura explicita unicamente: solo se crea, escribe o actualiza cuando el usuario lo pide directamente. Nunca modificarlo de forma proactiva ni "de paso" al terminar otra tarea.
+- La retencion se basa en **dias**: mantener siempre las ultimas **3 secciones de dia**. Al agregar un dia nuevo que supere ese total, eliminar la seccion del dia mas antiguo completa.
+- **Cada seccion** representa un unico dia (`## AAAA-MM-DD - titulo`). Dentro puede haber una cantidad ilimitada de sesiones; nunca truncar ni fusionar sesiones de un mismo dia.
+- Cada sesion lleva su propio titulo corto (`### Sesion N - ...`), ordenadas de la mas antigua a la mas reciente, separadas por una linea `---`.
+- El bloque `## **NO ELIMINAR**` (pendientes abiertos) no cuenta para la retencion y solo se borra si el usuario lo pide.

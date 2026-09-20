@@ -4,35 +4,60 @@ export interface TechGroup {
   items: string[];
 }
 
+/**
+ * Stack agrupado por capa de responsabilidad arquitectonica,
+ * no por lista plana de logos.
+ */
 export const TECH_STACK_DATA: TechGroup[] = [
   {
-    layer: "Core Languages & Runtimes",
-    description: "Bases solidas de computacion fuertemente tipada y ejecucion asincrona.",
-    items: ["TypeScript 5 (Strict)", "Node.js 18+", "Python 3.12", "Bun", "Bash & PowerShell"]
+    layer: "Core Runtime & Lenguajes",
+    description:
+      "La base tipada sobre la que se apoya todo lo demas. Sin tipos debiles no hay determinismo posible.",
+    items: [
+      "TypeScript 5.7+ (Strict, cero any)",
+      "Node.js 20+",
+      "Python 3.12",
+      "SQL moderno (CTE, window functions)",
+      "Bash & PowerShell"
+    ]
   },
   {
-    layer: "Frontend & Reactive Systems",
-    description: "Interfaces de usuario de alto rendimiento sin layout shifts y renderizado edge.",
-    items: ["Next.js 15 (App Router)", "React 19", "Tailwind CSS", "Vite", "Server-Sent Events", "WebSockets"]
+    layer: "Frontend & Interfaces de Alta Frecuencia",
+    description:
+      "Interfaces que absorben decenas de actualizaciones por segundo sin layout shift ni fugas de memoria.",
+    items: [
+      "React 19",
+      "Next.js 15 (App Router, Server Components)",
+      "Vite 6",
+      "Tailwind CSS",
+      "Server-Sent Events (SSE)",
+      "WebSockets"
+    ]
   },
   {
-    layer: "Backend, APIs & Architecture",
-    description: "Sistemas distribuidos, validacion determinista y endpoints resilientes.",
-    items: ["FastAPI", "Express", "Zod", "REST APIs", "Microservicios", "State Machines"]
+    layer: "Determinismo, Algoritmos & Seguridad",
+    description:
+      "La capa que convierte una respuesta probabilistica en un dictamen auditable y reproducible.",
+    items: [
+      "Zod 3 (contratos de entrada y salida)",
+      "Vitest",
+      "State Machines deterministas",
+      "Parsers AST",
+      "Levenshtein / Jaro-Winkler",
+      "Checksum Modulo 11 (AFIP/ARCA)"
+    ]
   },
   {
-    layer: "Data, Databases & Storage",
-    description: "Almacenamiento transaccional y procesamiento por lotes.",
-    items: ["PostgreSQL", "Supabase", "Redis", "Docker", "SQL Optimization"]
-  },
-  {
-    layer: "AI Engineering & Autonomous Agents",
-    description: "Integracion de modelos de frontera, guardrails y automatizacion con agentes.",
-    items: ["LLM Tool Calling", "Claude Code", "Antigravity", "Deterministic Guardrails", "n8n Workflows"]
-  },
-  {
-    layer: "Testing, Packaging & DevOps",
-    description: "Garantia de calidad estricta, cobertura unitaria y despliegue continuo.",
-    items: ["Vitest", "Jest", "tsup (ESM/CJS)", "Git & GitHub Actions", "Vercel", "Cloudflare Pages"]
+    layer: "Infraestructura & Datos",
+    description:
+      "Persistencia transaccional y ejecucion en el borde, con latencia de red cercana a cero.",
+    items: [
+      "PostgreSQL",
+      "Supabase",
+      "Redis",
+      "Docker",
+      "Cloudflare Workers / Edge Runtimes",
+      "Vercel"
+    ]
   }
 ];
