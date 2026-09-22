@@ -23,9 +23,9 @@ export interface DeliveryCommitment {
 }
 
 /**
- * Los 5 Activos Empresariales que adquiere el cliente al implementar
- * el Sistema Comercial de Transformacion Operativa de Velinex.
- * Fuente: VELINEX - Bases y Fundaciones del Negocio (Nicho PyMEs Multirubro) v9.1.
+ * Los 5 activos que instala Manuel Lione al implementar el sistema de
+ * transformacion operativa. Cada uno es una capacidad que el negocio
+ * no podia comprar antes, no una funcionalidad de software.
  */
 export const BUSINESS_ASSETS: BusinessAsset[] = [
   {
@@ -33,89 +33,89 @@ export const BUSINESS_ASSETS: BusinessAsset[] = [
     title: "Disponibilidad Infinita",
     claim: "24/7/365",
     description:
-      "El sistema atiende a cualquier hora, incluidos sabados a la noche, domingos y feriados. La empresa deja de perder consultas fuera del horario comercial.",
+      "Dejar de perder clientes los fines de semana, de noche o en feriados. El sistema atiende siempre, con el mismo criterio comercial.",
     iconKey: "clock"
   },
   {
-    id: "velocidad-infinita",
-    title: "Velocidad Infinita",
+    id: "velocidad-inmediata",
+    title: "Velocidad Inmediata",
     claim: "Contacto en menos de 30s",
     description:
-      "El primero que responde se queda con la venta. La contactabilidad baja de horas a segundos y el prospecto no alcanza a consultar a la competencia.",
+      "El primero que responde con claridad, gana la venta. La contactabilidad baja de horas a segundos y el prospecto no alcanza a consultar a la competencia.",
     iconKey: "bolt"
   },
   {
-    id: "consistencia-absoluta",
-    title: "Consistencia Absoluta",
-    claim: "Protocolo identico en cada conversacion",
+    id: "consistencia-total",
+    title: "Consistencia Total",
+    claim: "El mismo estándar en cada conversación",
     description:
-      "Calificacion, precios y derivaciones siguen reglas estrictas. No dependen del humor, del cansancio ni de la rotacion del personal.",
+      "La atención sigue el mismo estándar de calidad sin depender del cansancio del personal, del humor del día ni de la rotación del equipo.",
     iconKey: "shield"
   },
   {
-    id: "informacion-perfecta",
-    title: "Informacion Perfecta",
+    id: "claridad-de-datos",
+    title: "Claridad de Datos",
     claim: "Trazabilidad total del embudo",
     description:
-      "Cada lead queda registrado con origen, estado y motivo de caida. La direccion decide con datos reales de conversion, no con percepciones.",
+      "Registro exacto de qué consulta entra, qué convierte y dónde se traba el proceso. La dirección decide con números reales, no con percepciones.",
     iconKey: "chart"
   },
   {
-    id: "capacidad-infinita",
-    title: "Capacidad Infinita",
+    id: "capacidad-de-escala",
+    title: "Capacidad de Escala",
     claim: "De 10 a 500 consultas diarias",
     description:
-      "El volumen escala sin sumar costos fijos, sin contratar mas personas y sin generar caos operativo en la recepcion o en el equipo comercial.",
+      "Atender diez o quinientas consultas por día sin multiplicar los costos fijos, sin contratar más personas y sin generar caos operativo.",
     iconKey: "layers"
   }
 ];
 
 /**
- * Casos de transformacion sectorial documentados en la cartera de Velinex.
+ * Casos de transformacion sectorial documentados en cartera.
  */
 export const SECTOR_CASES: SectorCase[] = [
   {
     id: "concesionaria",
     sector: "Concesionaria Automotriz",
-    vertical: "Venta de vehiculos 0km y usados",
+    vertical: "Venta de vehículos 0km y usados",
     bottleneck:
-      "Las consultas de sabado a la noche y domingo se contestaban el lunes. Para entonces el comprador ya habia visitado otra concesionaria.",
+      "Las consultas de sábado a la noche y domingo se contestaban el lunes. Para entonces el comprador ya había visitado otra concesionaria.",
     implementation:
-      "Atencion continua con calificacion por modelo, presupuesto y forma de pago. Derivacion al vendedor con la ficha del prospecto ya armada.",
-    outcome: "Recupero sistematico de la demanda de fin de semana",
-    outcomeMetric: "Tasa de contacto sub-30s"
+      "Atención continua con calificación por modelo, presupuesto y forma de pago. Derivación al vendedor con la ficha del prospecto ya armada.",
+    outcome: "Recupero sistemático de la demanda de fin de semana",
+    outcomeMetric: "Contacto en menos de 30s"
   },
   {
     id: "clinica",
-    sector: "Clinica de Salud",
-    vertical: "Especialidades odontologicas",
+    sector: "Clínica de Salud",
+    vertical: "Especialidades odontológicas",
     bottleneck:
-      "La recepcion atendia el telefono y el mostrador a la vez. Las urgencias reales se mezclaban con consultas de rutina y los turnos se caian.",
+      "La recepción atendía el teléfono y el mostrador a la vez. Las urgencias reales se mezclaban con consultas de rutina y los turnos se caían.",
     implementation:
       "Filtro determinista de urgencias con triage de 4 niveles y agenda automatizada con recordatorios previos al turno.",
-    outcome: "Asistencia efectiva al sillon del 78% y agenda sin huecos",
-    outcomeMetric: "+40 h semanales recuperadas en recepcion"
+    outcome: "Asistencia efectiva al sillón del 78% y agenda sin huecos",
+    outcomeMetric: "+40 h semanales recuperadas"
   },
   {
     id: "real-estate",
     sector: "Desarrollos Inmobiliarios",
     vertical: "Real estate y emprendimientos",
     bottleneck:
-      "El asesor comercial quemaba el dia respondiendo consultas de gente sin presupuesto ni intencion real de compra.",
+      "El asesor comercial quemaba el día respondiendo consultas de gente sin presupuesto ni intención real de compra.",
     implementation:
-      "Filtrado previo por presupuesto, zona de interes y plazo de decision. Solo llega al asesor el prospecto calificado con visita pactada.",
-    outcome: "El equipo comercial trabaja unicamente prospectos calificados",
-    outcomeMetric: "Visita pactada antes de la derivacion"
+      "Filtrado previo por presupuesto, zona de interés y plazo de decisión. Solo llega al asesor el prospecto calificado con visita pactada.",
+    outcome: "El equipo comercial trabaja únicamente prospectos calificados",
+    outcomeMetric: "Visita pactada antes de derivar"
   },
   {
     id: "retail-optica",
     sector: "Retail Especializado",
-    vertical: "Optica y showroom de producto",
+    vertical: "Óptica y showroom de producto",
     bottleneck:
-      "El catalogo vivia en fotos sueltas de WhatsApp y los pedidos llegaban incompletos, sin modelo, color ni receta.",
+      "El catálogo vivía en fotos sueltas de WhatsApp y los pedidos llegaban incompletos, sin modelo, color ni receta.",
     implementation:
-      "Showroom digital pre-renderizado con filtrado instantaneo y despacho del pedido estructurado directo al canal de venta.",
-    outcome: "Pedido completo y sin ambiguedad desde el primer mensaje",
+      "Showroom digital pre-renderizado con filtrado instantáneo y despacho del pedido estructurado directo al canal de venta.",
+    outcome: "Pedido completo y sin ambigüedad desde el primer mensaje",
     outcomeMetric: "32 rutas SSG, 100/100 Lighthouse"
   }
 ];
@@ -125,7 +125,7 @@ export const SECTOR_CASES: SectorCase[] = [
  */
 export const DELIVERY_COMMITMENT: DeliveryCommitment[] = [
   {
-    label: "Plazo de implementacion",
+    label: "Plazo de implementación",
     value: "4 semanas exactas",
     detail: "Del relevamiento a la puesta en marcha, con hitos semanales cerrados."
   },
@@ -135,13 +135,13 @@ export const DELIVERY_COMMITMENT: DeliveryCommitment[] = [
     detail: "La empresa no configura nada: el sistema se entrega operando."
   },
   {
-    label: "Integracion",
+    label: "Integración",
     value: "Sobre las herramientas actuales",
     detail: "Se monta sobre el CRM, la agenda y los canales que la empresa ya usa."
   },
   {
-    label: "Garantia",
+    label: "Garantía",
     value: "Puesta en marcha garantizada",
-    detail: "El compromiso es el sistema funcionando en produccion, no un entregable teorico."
+    detail: "El compromiso es el sistema funcionando en producción, no un entregable teórico."
   }
 ];

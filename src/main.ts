@@ -17,57 +17,57 @@ declare global {
   }
 }
 
-/* ---------------------------------------------------------------- Proyectos */
+/* ---------------------------------------------------------------- Sistemas */
 
-function renderProjects(filter: string = "all"): void {
+function renderProjects(): void {
   const container = document.getElementById("projects-grid");
   if (!container) return;
 
-  const filtered =
-    filter === "all"
-      ? PROJECTS_DATA
-      : PROJECTS_DATA.filter((p) => p.category === filter);
-
-  container.innerHTML = filtered
-    .map((project) => {
-      const metricsHtml = project.metrics
-        .map(
-          (m) => `
+  container.innerHTML = PROJECTS_DATA.map((project) => {
+    const metricsHtml = project.metrics
+      .map(
+        (m) => `
           <div class="p-metric">
             <div class="p-metric-val">${escapeHtml(m.value)}</div>
             <div class="p-metric-lbl">${escapeHtml(m.label)}</div>
           </div>`
-        )
-        .join("");
+      )
+      .join("");
 
-      const techPills = project.techStack
-        .map((t) => `<span class="tech-pill">${escapeHtml(t)}</span>`)
-        .join("");
+    const techPills = project.techStack
+      .map((t) => `<span class="tech-pill">${escapeHtml(t)}</span>`)
+      .join("");
 
-      return `
-        <article class="project-card" data-project-id="${project.id}">
-          <div class="project-top">
-            <div class="project-header-bar">
-              <span class="project-category-tag">${escapeHtml(project.categoryLabel)}</span>
-              <span class="project-badge">${escapeHtml(project.badge)}</span>
-            </div>
-            <h3 class="project-title">${escapeHtml(project.title)}</h3>
-            <p class="project-subtitle">${escapeHtml(project.subtitle)}</p>
-            <div class="project-metrics-row">${metricsHtml}</div>
-            <div class="tech-pills">${techPills}</div>
-          </div>
-          <div class="project-actions">
-            <button class="btn btn-secondary view-arch-btn" data-id="${project.id}" style="flex: 1;">
-              ${icon("blueprint", 17)}<span>Ver arquitectura y codigo</span>
-            </button>
-            <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer"
-               class="btn btn-secondary btn-icon-only" aria-label="Ver ${escapeHtml(project.title)} en GitHub">
-              ${icon("github", 17)}
-            </a>
-          </div>
-        </article>`;
-    })
-    .join("");
+    return `
+      <article class="project-card" data-project-id="${project.id}">
+        <div class="project-shot">
+          <img
+            src="${project.image}"
+            alt="${escapeHtml(project.imageAlt)}"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="project-shot-badge">${escapeHtml(project.badge)}</span>
+        </div>
+
+        <div class="project-top">
+          <h3 class="project-title">${escapeHtml(project.title)}</h3>
+          <p class="project-subtitle">${escapeHtml(project.subtitle)}</p>
+          <div class="project-metrics-row">${metricsHtml}</div>
+          <div class="tech-pills">${techPills}</div>
+        </div>
+
+        <div class="project-actions">
+          <button class="btn btn-primary view-arch-btn" data-id="${project.id}" style="flex: 1;">
+            ${icon("blueprint", 17)}<span>Ver transformación y arquitectura</span>
+          </button>
+          <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer"
+             class="btn btn-secondary btn-icon-only" aria-label="Ver ${escapeHtml(project.title)} en GitHub">
+            ${icon("github", 17)}
+          </a>
+        </div>
+      </article>`;
+  }).join("");
 
   container.querySelectorAll<HTMLElement>(".view-arch-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -85,6 +85,28 @@ function openProjectModal(projectId: string): void {
   const modalContent = document.getElementById("modal-content");
   if (!modal || !modalContent) return;
 
+  const metricsHtml = project.metrics
+    .map(
+      (m) => `
+        <div class="modal-metric">
+          <span class="modal-metric-val">${escapeHtml(m.value)}</span>
+          <span class="modal-metric-lbl">${escapeHtml(m.label)}</span>
+        </div>`
+    )
+    .join("");
+
+  const galleryHtml = project.gallery.length
+    ? `<h4 class="modal-section-title">Otras vistas del sistema</h4>
+       <div class="modal-gallery">
+         ${project.gallery
+           .map(
+             (src) =>
+               `<img src="${src}" alt="${escapeHtml(project.imageAlt)}" loading="lazy" decoding="async" />`
+           )
+           .join("")}
+       </div>`
+    : "";
+
   modalContent.innerHTML = `
     <header class="modal-head">
       <span class="project-badge">${escapeHtml(project.badge)}</span>
@@ -92,36 +114,46 @@ function openProjectModal(projectId: string): void {
       <p class="modal-subtitle">${escapeHtml(project.subtitle)}</p>
     </header>
 
+    <div class="modal-shot">
+      <img
+        src="${project.image}"
+        alt="${escapeHtml(project.imageAlt)}"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div class="modal-metrics">${metricsHtml}</div>
+
     <div class="modal-split">
       <div class="modal-panel">
-        <h4 class="modal-panel-title accent-cyan">Problema de negocio</h4>
-        <p>${escapeHtml(project.problem)}</p>
+        <h4 class="modal-panel-title accent-red">El dolor del negocio</h4>
+        <p>${escapeHtml(project.painPoint)}</p>
       </div>
       <div class="modal-panel">
-        <h4 class="modal-panel-title accent-emerald">Solucion de arquitectura</h4>
-        <p>${escapeHtml(project.solution)}</p>
+        <h4 class="modal-panel-title accent-emerald">La transformación implementada</h4>
+        <p>${escapeHtml(project.transformation)}</p>
       </div>
     </div>
 
-    <h4 class="modal-section-title">Decisiones de arquitectura</h4>
+    <h4 class="modal-section-title">Decisiones de arquitectura que lo sostienen</h4>
     <ul class="modal-list">
       ${project.architectureHighlights
         .map((h) => `<li>${icon("check", 15)}<span>${escapeHtml(h)}</span></li>`)
         .join("")}
     </ul>
 
-    <h4 class="modal-section-title">Origen de las metricas</h4>
-    <p class="modal-provenance">${icon("shield", 16)}<span>${escapeHtml(project.metricsProvenance)}</span></p>
+    <h4 class="modal-section-title">Respaldo técnico</h4>
+    <p class="modal-provenance">${icon("shield", 16)}<span>${escapeHtml(project.techBacking)}</span></p>
 
-    <h4 class="modal-section-title">Diagrama de flujo</h4>
+    <h4 class="modal-section-title">Flujo del sistema</h4>
     <div class="modal-code-box">${escapeHtml(project.architectureDiagram)}</div>
 
-    <h4 class="modal-section-title">Muestra de codigo TypeScript estricto</h4>
-    <div class="modal-code-box">${escapeHtml(project.codeSnippet)}</div>
+    ${galleryHtml}
 
     <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer"
        class="btn btn-primary modal-cta">
-      <span>Ver repositorio completo en GitHub</span>${icon("arrowUpRight", 16)}
+      <span>Ver repositorio en GitHub</span>${icon("arrowUpRight", 16)}
     </a>`;
 
   modal.classList.add("open");
@@ -190,7 +222,7 @@ function renderSectorCases(): void {
         <p>${escapeHtml(item.bottleneck)}</p>
       </div>
       <div class="case-row">
-        <span class="case-label case-label-cyan">Implementacion</span>
+        <span class="case-label case-label-cyan">Implementación</span>
         <p>${escapeHtml(item.implementation)}</p>
       </div>
       <div class="case-result">
@@ -262,30 +294,34 @@ function renderSocials(): void {
   ).join("");
 }
 
+async function copyToClipboard(text: string): Promise<void> {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    helper.setAttribute("readonly", "true");
+    helper.style.position = "fixed";
+    helper.style.opacity = "0";
+    document.body.appendChild(helper);
+    helper.select();
+    document.execCommand("copy");
+    document.body.removeChild(helper);
+  }
+}
+
 function setupCopyEmail(): void {
   const btn = document.getElementById("copy-email-btn");
   if (!btn) return;
 
   const idle = `${icon("clipboard", 16)}<span class="copy-email-text">${CONTACT_EMAIL}</span>`;
-  const done = `${icon("check", 16)}<span class="copy-email-text">Copiado</span>`;
+  const done = `${icon("check", 16)}<span class="copy-email-text">Email copiado</span>`;
   btn.innerHTML = idle;
 
   let resetTimer = 0;
 
   btn.addEventListener("click", async () => {
-    try {
-      await navigator.clipboard.writeText(CONTACT_EMAIL);
-    } catch {
-      const helper = document.createElement("textarea");
-      helper.value = CONTACT_EMAIL;
-      helper.setAttribute("readonly", "true");
-      helper.style.position = "fixed";
-      helper.style.opacity = "0";
-      document.body.appendChild(helper);
-      helper.select();
-      document.execCommand("copy");
-      document.body.removeChild(helper);
-    }
+    await copyToClipboard(CONTACT_EMAIL);
 
     btn.classList.add("copied");
     btn.innerHTML = done;
@@ -301,16 +337,6 @@ function setupCopyEmail(): void {
 /* ------------------------------------------------------------------ Listeners */
 
 function setupListeners(): void {
-  document.querySelectorAll<HTMLElement>(".tab-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document
-        .querySelectorAll(".tab-btn")
-        .forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      renderProjects(btn.getAttribute("data-filter") || "all");
-    });
-  });
-
   const modal = document.getElementById("project-modal");
   const modalClose = document.getElementById("modal-close");
   if (modal && modalClose) {
@@ -329,21 +355,36 @@ window.handleContactSubmit = () => {
   const nameInput = document.getElementById("c-name") as HTMLInputElement | null;
   const emailInput = document.getElementById("c-email") as HTMLInputElement | null;
   const msgInput = document.getElementById("c-msg") as HTMLTextAreaElement | null;
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const success = document.getElementById("contact-success");
 
-  const name = nameInput ? nameInput.value : "";
-  const email = emailInput ? emailInput.value : "";
-  const msg = msgInput ? msgInput.value : "";
+  const name = nameInput ? nameInput.value.trim() : "";
+  const email = emailInput ? emailInput.value.trim() : "";
+  const msg = msgInput ? msgInput.value.trim() : "";
 
-  const subject = encodeURIComponent(`Consulta de arquitectura: ${name}`);
+  if (!name || !email || !msg) return;
+
+  const subject = encodeURIComponent(`Consulta de transformación operativa: ${name}`);
   const body = encodeURIComponent(
-    `Hola Manuel,\n\nSoy ${name} (${email}).\n\nDetalles del proyecto:\n${msg}\n\nEnviado desde el portfolio.`
+    `Hola Manuel,\n\nSoy ${name} (${email}).\n\nLo que necesito resolver:\n${msg}\n\nEnviado desde lionegmanuel.dev`
   );
 
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
+  if (form && success) {
+    form.hidden = true;
+    success.hidden = false;
+    success.innerHTML = `
+      ${icon("check", 22)}
+      <div>
+        <strong>Mensaje listo para enviar.</strong>
+        <span>Se abrió tu cliente de correo con el brief cargado. Respondo en menos de 24 horas hábiles.</span>
+      </div>`;
+  }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderProjects("all");
+  renderProjects();
   renderTechStack();
   renderBusinessAssets();
   renderSectorCases();

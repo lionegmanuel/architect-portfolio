@@ -20,7 +20,9 @@ type IconName =
   | "layers"
   | "arrowUpRight"
   | "play"
-  | "blueprint";
+  | "blueprint"
+  | "download"
+  | "sparkles";
 
 const PATHS: Record<IconName, string> = {
   github:
@@ -51,6 +53,10 @@ const PATHS: Record<IconName, string> = {
   arrowUpRight:
     '<path fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m-7.5-.5H17V14"/>',
   play: '<path fill="currentColor" d="M8 5.2v13.6a.6.6 0 0 0 .92.5l10.6-6.8a.6.6 0 0 0 0-1l-10.6-6.8a.6.6 0 0 0-.92.5Z"/>',
+  download:
+    '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3.5v11m0 0 4-4m-4 4-4-4M4.5 17v2.5h15V17"/>',
+  sparkles:
+    '<path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="m12 3 1.9 4.9L18.8 9.8l-4.9 1.9L12 16.6l-1.9-4.9L5.2 9.8l4.9-1.9L12 3Z"/><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="m18.5 15 .8 2.1 2.1.8-2.1.8-.8 2.1-.8-2.1-2.1-.8 2.1-.8.8-2.1Z"/>',
   blueprint:
     '<path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3.5 4.5h17v15h-17z"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M8.5 4.5v15M3.5 9.5h17M14 12.5h6.5"/>'
 };

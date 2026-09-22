@@ -5,14 +5,14 @@ export interface TechGroup {
 }
 
 /**
- * Stack agrupado por capa de responsabilidad arquitectonica,
+ * Stack agrupado por capa de responsabilidad arquitectónica,
  * no por lista plana de logos.
  */
 export const TECH_STACK_DATA: TechGroup[] = [
   {
     layer: "Core Runtime & Lenguajes",
     description:
-      "La base tipada sobre la que se apoya todo lo demas. Sin tipos debiles no hay determinismo posible.",
+      "La base tipada sobre la que se apoya todo lo demás. Sin tipos débiles no hay determinismo posible.",
     items: [
       "TypeScript 5.7+ (Strict, cero any)",
       "Node.js 20+",
@@ -37,20 +37,20 @@ export const TECH_STACK_DATA: TechGroup[] = [
   {
     layer: "Determinismo, Algoritmos & Seguridad",
     description:
-      "La capa que convierte una respuesta probabilistica en un dictamen auditable y reproducible.",
+      "La capa que convierte una respuesta probabilística en un dictamen auditable y reproducible.",
     items: [
       "Zod 3 (contratos de entrada y salida)",
       "Vitest",
       "State Machines deterministas",
       "Parsers AST",
       "Levenshtein / Jaro-Winkler",
-      "Checksum Modulo 11 (AFIP/ARCA)"
+      "Checksum Módulo 11 (AFIP/ARCA)"
     ]
   },
   {
     layer: "Infraestructura & Datos",
     description:
-      "Persistencia transaccional y ejecucion en el borde, con latencia de red cercana a cero.",
+      "Persistencia transaccional y ejecución en el borde, con latencia de red cercana a cero.",
     items: [
       "PostgreSQL",
       "Supabase",
